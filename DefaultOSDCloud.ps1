@@ -10,7 +10,7 @@ cls
 Write-Host "===================== Main Menu =======================" -ForegroundColor Yellow
 Write-Host "1: Zero-Touch WIN10 21H1 | en-gb | Enterprise"-ForegroundColor Yellow
 Write-Host "2: Zero-Touch WIN10 20H2 | en-gb | Enterprise" -ForegroundColor Yellow
-Write-Host "3: AutoPilotOOBE | Testing" -ForegroundColor Yellow
+Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
 Write-Host "4: Exit`n"-ForegroundColor Yellow
 $input = Read-Host "Please make a selection"
 Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
@@ -28,7 +28,7 @@ switch ($input)
 {
     '1' { Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Enterprise -ZTI } 
     '2' { Start-OSDCloud -OSLanguage en-gb -OSBuild 20H2 -OSEdition Enterprise -ZTI } 
-    '3' { AutoPilotOOBE	} 
+    '3' { Start-OSDCloudGUI	} 
     '4' { Exit		}
 }
 
