@@ -19,9 +19,11 @@ Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
 #Make sure I have the latest OSD Content
 Write-Host  -ForegroundColor Cyan "Updating OSD PowerShell Module"
 Install-Module OSD -Force
+Install-Module AutopilotOOBE -Force
 
 Write-Host  -ForegroundColor Cyan "Importing PowerShell Modules"
 Import-Module OSD -Force
+Import-Module AutopilotOOBE -Force
 
 # Testing OOBE
 $Params = @{
