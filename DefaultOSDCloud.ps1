@@ -45,8 +45,8 @@ $AutopilotOOBEJson = @'
         ],
     "Hidden":  [
         "AddToGroup",
-        # "AssignedComputerName",
-        # "AssignedUser",
+        "AssignedComputerName",
+        "AssignedUser",
         "PostAction"
         ],
     "PostAction":  "Quit",
@@ -55,7 +55,7 @@ $AutopilotOOBEJson = @'
     "Title":  "NovusTest Autopilot Registration"
 }
 '@
-$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE.  
+$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE  
 
 switch ($input)
 {
