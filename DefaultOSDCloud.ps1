@@ -11,7 +11,8 @@ Write-Host "===================== Main Menu =======================" -Foreground
 Write-Host "1: Zero-Touch WIN10 21H1 | en-gb | Enterprise"-ForegroundColor Yellow
 Write-Host "2: Zero-Touch WIN10 20H2 | en-gb | Enterprise" -ForegroundColor Yellow
 Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
-Write-Host "4: Exit`n"-ForegroundColor Yellow
+Write-Host "4: AutoPilotOOBE | Testing" -ForegroundColor Yellow
+Write-Host "5: Exit`n"-ForegroundColor Yellow
 $input = Read-Host "Please make a selection"
 Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
 
@@ -27,7 +28,46 @@ switch ($input)
     '1' { Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Enterprise -ZTI } 
     '2' { Start-OSDCloud -OSLanguage en-gb -OSBuild 20H2 -OSEdition Enterprise -ZTI } 
     '3' { Start-OSDCloudGUI	} 
-    '4' { Exit		}
+    '4' {
+            #   OS: Params and Start-OSDCloud
+            $Params = @{
+                OSBuild = "21H1"
+                OSEdition = "Enterprise"
+                OSLanguage = "en-gb"
+                OSLicense = "Retail"
+                SkipAutopilot = $true
+                SkipODT = $true
+            }
+            Start-OSDCloud @Params
+
+            #=======================================================================
+            #   PostOS: AutopilotOOBE Staging
+            #=======================================================================
+            $AutopilotOOBEJson = @'
+            {
+                "Assign":  {
+                               "IsPresent":  true
+                           },
+                "GroupTag":  "Staff",
+                "GroupTagOptions":  [
+                                        "Student",
+                                        "Staff"
+                                    ],
+                "Hidden":  [
+                               "AddToGroup",
+                               #"AssignedComputerName",
+                               #"AssignedUser",
+                               "PostAction"
+                           ],
+                "PostAction":  "Quit",
+                "Run":  "NetworkingWireless",
+                "Docs":  "https://autopilotoobe.osdeploy.com/",
+                "Title":  "OSDeploy Autopilot Registration"
+            }
+            '@
+            $AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE.  
+    } 
+    '5' { Exit		}
 }
 
 #Restart from WinPE
