@@ -11,7 +11,6 @@ Write-Host "===================== Main Menu =======================" -Foreground
 Write-Host "1: Zero-Touch WIN10 21H1 | en-gb | Enterprise"-ForegroundColor Yellow
 Write-Host "2: Zero-Touch WIN10 20H2 | en-gb | Enterprise" -ForegroundColor Yellow
 Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
-Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
 Write-Host "4: AutoPilotOOBE | Testing" -ForegroundColor Yellow
 Write-Host "5: Exit"-ForegroundColor Yellow
 $input = Read-Host "Please make a selection"
