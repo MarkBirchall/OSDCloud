@@ -23,50 +23,46 @@ Install-Module OSD -Force
 Write-Host  -ForegroundColor Cyan "Importing PowerShell Modules"
 Import-Module OSD -Force
 
+# Testing OOBE
+$Params = @{
+    OSBuild = "21H1"
+    OSEdition = "Enterprise"
+    OSLanguage = "en-gb"
+    OSLicense = "Retail"
+    SkipAutopilot = $true
+    SkipODT = $true
+}
+
+$AutopilotOOBEJson = @'
+{
+    "Assign":  {
+        "IsPresent":  true
+    },
+    "GroupTag":  "Staff",
+    "GroupTagOptions":  [
+        "Student",
+        "Staff"
+        ],
+    "Hidden":  [
+        "AddToGroup",
+        # "AssignedComputerName",
+        # "AssignedUser",
+        "PostAction"
+        ],
+    "PostAction":  "Quit",
+    "Run":  "NetworkingWireless",
+    "Docs":  "https://autopilotoobe.osdeploy.com/",
+    "Title":  "NovusTest Autopilot Registration"
+}
+'@
+$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE.  
+
 switch ($input)
 {
     '1' { Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Enterprise -ZTI } 
     '2' { Start-OSDCloud -OSLanguage en-gb -OSBuild 20H2 -OSEdition Enterprise -ZTI } 
     '3' { Start-OSDCloudGUI	} 
-    '4' {
-            #   OS: Params and Start-OSDCloud
-            $Params = @{
-                OSBuild = "21H1"
-                OSEdition = "Enterprise"
-                OSLanguage = "en-gb"
-                OSLicense = "Retail"
-                SkipAutopilot = $true
-                SkipODT = $true
-            }
-            Start-OSDCloud @Params
-
-            #=======================================================================
-            #   PostOS: AutopilotOOBE Staging
-            #=======================================================================
-            $AutopilotOOBEJson = @'
-            {
-                "Assign":  {
-                               "IsPresent":  true
-                           },
-                "GroupTag":  "Staff",
-                "GroupTagOptions":  [
-                                        "Student",
-                                        "Staff"
-                                    ],
-                "Hidden":  [
-                               "AddToGroup",
-                               #"AssignedComputerName",
-                               #"AssignedUser",
-                               "PostAction"
-                           ],
-                "PostAction":  "Quit",
-                "Run":  "NetworkingWireless",
-                "Docs":  "https://autopilotoobe.osdeploy.com/",
-                "Title":  "OSDeploy Autopilot Registration"
-            }
-            '@
-            $AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE.  
-    } 
+    '4' { Start-OSDCloud @Params} 
     '5' { Exit		}
 }
 
