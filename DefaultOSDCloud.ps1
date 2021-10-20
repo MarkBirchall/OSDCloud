@@ -11,61 +11,26 @@ Write-Host "===================== Main Menu =======================" -Foreground
 Write-Host "1: Zero-Touch WIN10 21H1 | en-gb | Enterprise"-ForegroundColor Yellow
 Write-Host "2: Zero-Touch WIN10 20H2 | en-gb | Enterprise" -ForegroundColor Yellow
 Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
+Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
 Write-Host "4: AutoPilotOOBE | Testing" -ForegroundColor Yellow
-Write-Host "5: Exit`n"-ForegroundColor Yellow
+Write-Host "5: Exit"-ForegroundColor Yellow
 $input = Read-Host "Please make a selection"
 Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
 
 #Make sure I have the latest OSD Content
 Write-Host  -ForegroundColor Cyan "Updating OSD PowerShell Module"
 Install-Module OSD -Force
-Install-Module AutopilotOOBE -Force
 
 Write-Host  -ForegroundColor Cyan "Importing PowerShell Modules"
 Import-Module OSD -Force
-Import-Module AutopilotOOBE -Force
-
-# Testing OOBE
-$Params = @{
-    OSBuild = "21H1"
-    OSEdition = "Enterprise"
-    OSLanguage = "en-gb"
-    OSLicense = "Retail"
-    SkipAutopilot = $true
-    SkipODT = $true
-}
-
-$AutopilotOOBEJson = @'
-{
-    "Assign":  {
-        "IsPresent":  true
-    },
-    "GroupTag":  "Staff",
-    "GroupTagOptions":  [
-        "Student",
-        "Staff"
-        ],
-    "Hidden":  [
-        "AddToGroup",
-        "AssignedComputerName",
-        "AssignedUser",
-        "PostAction"
-        ],
-    "PostAction":  "Quit",
-    "Run":  "NetworkingWireless",
-    "Docs":  "https://autopilotoobe.osdeploy.com/",
-    "Title":  "NovusTest Autopilot Registration"
-}
-'@
-$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE  
 
 switch ($input)
 {
     '1' { Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Enterprise -ZTI } 
     '2' { Start-OSDCloud -OSLanguage en-gb -OSBuild 20H2 -OSEdition Enterprise -ZTI } 
     '3' { Start-OSDCloudGUI	} 
-    '4' { Start-OSDCloud @Params} 
-    '5' { Exit		}
+    '4' { Invoke-WebPSScript 'https://github.com/MarkBirchall/OSDCloud/blob/main/AutoPilotOOBE.ps1' } 
+    '5' { Exit }
 }
 
 #Restart from WinPE
