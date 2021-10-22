@@ -45,11 +45,11 @@ $AutopilotOOBEJson=@'
     "Hidden":  [
                    "AddToGroup",
                    "AssignedUser",
+                   "Docs",
                    "PostAction"
                ],
     "PostAction":  "Quit",
     "Run":  "NetworkingWireless",
-    "Docs":  "https://autopilotoobe.osdeploy.com/",
     "Title":  "Autopilot Registration"
 }
 '@
