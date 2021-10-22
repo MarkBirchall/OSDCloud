@@ -32,7 +32,7 @@ switch ($input)
     '4' { Exit }
 }
 
-$AutopilotOOBEJson = @'
+$AutopilotOOBEJson=@'
 {
     "Assign":  {
                    "IsPresent":  true
