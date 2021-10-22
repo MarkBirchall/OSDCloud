@@ -1,5 +1,5 @@
 #   OS: Params and Start-OSDCloud
-$Params =@{
+$Params=@{
     OSBuild = "21H1"
     OSEdition = "Pro"
     OSLanguage = "en-us"
@@ -11,7 +11,7 @@ Start-OSDCloud @Params
 
 
 #   PostOS: AutopilotOOBE Staging
-$AutopilotOOBEJson = @'
+$AutopilotOOBEJson=@'
 {
     "Assign":  {
                    "IsPresent":  true
