@@ -32,30 +32,6 @@ switch ($input)
     '4' { Exit }
 }
 
-$AutopilotOOBEJson=@'
-{
-    "Assign":  {
-                   "IsPresent":  true
-               },
-    "GroupTag":  "Staff",
-    "GroupTagOptions":  [
-                            "Student",
-                            "Staff"
-                        ],
-    "Hidden":  [
-                   "AddToGroup",
-                   "AssignedUser",
-                   "PostAction"
-               ],
-    "PostAction":  "Quit",
-    "Run":  "NetworkingWireless",
-    "Docs":  "https://autopilotoobe.osdeploy.com/",
-    "Title":  "Autopilot Registration"
-}
-'@
-$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE"
-Start-AutopilotOOBE
-
 #Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 20 seconds!"
 Start-Sleep -Seconds 20
