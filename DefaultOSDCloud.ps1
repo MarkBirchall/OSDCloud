@@ -53,7 +53,7 @@ $AutopilotOOBEJson=@'
     "Title":  "Autopilot Registration"
 }
 '@
-$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE.
+$AutopilotOOBEJson | Out-File -FilePath "C:\ProgramData\OSDeploy\OSDeploy.AutopilotOOBE"
 Start-AutopilotOOBE
 
 #Restart from WinPE
