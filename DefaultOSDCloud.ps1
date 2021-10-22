@@ -11,8 +11,7 @@ Write-Host "===================== Main Menu =======================" -Foreground
 Write-Host "1: Zero-Touch WIN10 21H1 | en-gb | Enterprise"-ForegroundColor Yellow
 Write-Host "2: Zero-Touch WIN10 20H2 | en-gb | Enterprise" -ForegroundColor Yellow
 Write-Host "3: OSDCloudGUI | Testing" -ForegroundColor Yellow
-Write-Host "4: AutoPilotOOBE | Testing" -ForegroundColor Yellow
-Write-Host "5: Exit"-ForegroundColor Yellow
+Write-Host "4: Exit"-ForegroundColor Yellow
 $input = Read-Host "Please make a selection"
 Write-Host  -ForegroundColor Yellow "Loading OSDCloud..."
 
@@ -28,8 +27,7 @@ switch ($input)
     '1' { Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Enterprise -ZTI } 
     '2' { Start-OSDCloud -OSLanguage en-gb -OSBuild 20H2 -OSEdition Enterprise -ZTI } 
     '3' { Start-OSDCloudGUI	} 
-    '4' { Invoke-WebPSScript 'https://github.com/MarkBirchall/OSDCloud/blob/main/AutoPilotOOBE.ps1' } 
-    '5' { Exit }
+    '4' { Exit }
 }
 
 #Restart from WinPE
