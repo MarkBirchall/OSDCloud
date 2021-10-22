@@ -1,5 +1,5 @@
 #   OS: Params and Start-OSDCloud
-$Params = @{
+$Params =@{
     OSBuild = "21H1"
     OSEdition = "Pro"
     OSLanguage = "en-us"
