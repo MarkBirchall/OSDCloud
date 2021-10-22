@@ -1,9 +1,9 @@
 #   OS: Params and Start-OSDCloud
 $Params=@{
     OSBuild = "21H1"
-    OSEdition = "Pro"
-    OSLanguage = "en-us"
-    OSLicense = "Retail"
+    OSEdition = "Ent"
+    OSLanguage = "en-gb"
+    OSLicense = "Volume"
     SkipAutopilot = $true
     SkipODT = $true
 }
